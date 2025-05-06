@@ -1,11 +1,10 @@
 using UnityEngine;
-using System.Collections;
-
 
 public class MagicProjectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifeTime = 5f;
+    public float damage = 1f; // Add damage value
 
     void Start()
     {
@@ -22,7 +21,12 @@ public class MagicProjectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Hit Player!");
-            // Apply damage logic here
+
+            // Try to apply damage
+            if (other.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
+            {
+                playerStats.TakeDamage(damage);
+            }
         }
 
         Destroy(gameObject);
