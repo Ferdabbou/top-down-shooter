@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI waveText;
     public Image healthBarFill;
     public int currentScore = 0;
+    public TMP_Text enemiesAliveText;
 
     public void AddScore(int amount)
     {
@@ -35,8 +36,20 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateHealth(float current, float max)
     {
-        float percent = current / max;
-        healthBarFill.rectTransform.localScale = new Vector3(percent, 1, 1);
+        float percent = Mathf.Clamp01(current / max);
+        healthBarFill.rectTransform.localScale = new Vector3(percent, 1f, 1f);
     }
+
+    public void UpdateEnemiesAlive(int count)
+    {
+        enemiesAliveText.text = "Enemies: " + count;
+    }
+
+    public void HideHUD()
+    {
+        gameObject.SetActive(false); // Disables the HUD canvas
+    }
+
+
 
 }

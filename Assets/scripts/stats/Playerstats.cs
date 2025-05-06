@@ -12,12 +12,15 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage (float damage)
     {
-        HUDManager.instance.UpdateHealth(health, maxHealth);
+        
         health -= damage;
+        HUDManager.instance.UpdateHealth(health, maxHealth);
 
         if(health <=0)
         {
+            HUDManager.instance.HideHUD(); // Hide the HUD
             Destroy(gameObject);
+            GameOverManager.instance.ShowGameOver(HUDManager.instance.currentScore);
         }
     }
 

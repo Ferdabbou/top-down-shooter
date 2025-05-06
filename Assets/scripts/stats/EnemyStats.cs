@@ -18,9 +18,18 @@ public class EnemyStats : MonoBehaviour
 
         if(health <=0)
         {
-            Destroy(gameObject);
+            Die();
             HUDManager.instance.AddScore(10);
         }
+    }
+
+    void Die()
+    {
+        WaveManager waveManager = FindObjectOfType<WaveManager>();
+        if (waveManager != null)
+            waveManager.EnemyDied();
+
+        Destroy(gameObject);
     }
 
 }
