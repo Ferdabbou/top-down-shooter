@@ -19,6 +19,7 @@ public class EnemyStats : MonoBehaviour
         if(health <=0)
         {
             Destroy(gameObject);
+            HUDManager.instance.AddScore(10);
         }
     }
 

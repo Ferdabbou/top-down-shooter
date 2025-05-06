@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playerstats : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
      [SerializeField] float health, maxHealth = 3f;
 
@@ -12,6 +12,7 @@ public class Playerstats : MonoBehaviour
 
     public void TakeDamage (float damage)
     {
+        HUDManager.instance.UpdateHealth(health, maxHealth);
         health -= damage;
 
         if(health <=0)
