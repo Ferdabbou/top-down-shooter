@@ -157,6 +157,7 @@ MonoBehaviour:
   lookRadius: 100
   speed: 35
   shootCooldown: 1
+  firingSFX: {fileID: 8300000, guid: 595492fcb530f8846ad0322f58912866, type: 3}
   shootRange: 20
   magicProjectilePrefab: {fileID: 6883042031119220178, guid: 658f8c4ad08f5f3439784c5498f95ed3, type: 3}
   firePoint: {fileID: 4791650699458998918}

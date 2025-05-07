@@ -11,6 +11,7 @@ public class enemyController : MonoBehaviour
     private float shootTimer = 0f;
 
 
+    public AudioClip firingSFX;
     public float shootRange = 10f;
     public GameObject magicProjectilePrefab;
     public Transform firePoint;
@@ -72,6 +73,7 @@ public class enemyController : MonoBehaviour
 
     void Shoot()
     {
+        PlayFiringSFX();
         animator.SetBool("isShooting",true);
         if (magicProjectilePrefab == null || firePoint == null || target == null)
         {
@@ -87,4 +89,10 @@ public class enemyController : MonoBehaviour
         // Spawn projectile and aim at the player
         GameObject projectile = Instantiate(magicProjectilePrefab, firePoint.position, Quaternion.LookRotation(direction));          
     }
+
+    void PlayFiringSFX()
+{
+    if (firingSFX != null)
+        AudioSource.PlayClipAtPoint(firingSFX, transform.position);
+}
 }

@@ -16474,6 +16474,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 9038797588463723973, guid: dc1caaaa99e3a0f428f4807021b9fc7b, type: 3}
   myCam: {fileID: 946858710}
   arrowSpeed: 20
+  bowSFX: {fileID: 8300000, guid: 9e50774c6bfe40046b8828948dc45a47, type: 3}
 --- !u!114 &621787812
 MonoBehaviour:
   m_ObjectHideFlags: 0

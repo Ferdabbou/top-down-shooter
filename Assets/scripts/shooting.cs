@@ -11,6 +11,8 @@ public class shooting : MonoBehaviour
 
     public float arrowSpeed = 20f;
 
+    public AudioClip bowSFX;
+
     Animator myAnimator;
 
     void Start()
@@ -37,6 +39,7 @@ public class shooting : MonoBehaviour
         myAnimator.SetBool("shooting",true);
         Ray ray= myCam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+        PlayBowSFX();
        
          if(Physics.Raycast(ray, out hit))
         {
@@ -53,19 +56,9 @@ public class shooting : MonoBehaviour
         
     }
 
-    /*void rotate()
+    void PlayBowSFX()
     {
-        RaycastHit hit;
-        Ray ray= myCam.ScreenPointToRay(Input.mousePosition);
-
-        if(Physics.Raycast(ray, out hit))
-        {
-                Vector3 hitpoint = hit.point;
-            
-                hitpoint.y = transform.position.y;
-
-                transform.LookAt (hitpoint);
-             
-        }
-    }*/
+        if (bowSFX != null)
+            AudioSource.PlayClipAtPoint(bowSFX, transform.position);
+    }
 }

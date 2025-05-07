@@ -4,7 +4,10 @@ public class MagicProjectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifeTime = 5f;
-    public float damage = 1f; // Add damage value
+    public float damage = 1f;
+
+    public GameObject hitEffect; // Assign your magic impact particle here
+    public AudioClip sphereHitSFX;
 
     void Start()
     {
@@ -18,17 +21,30 @@ public class MagicProjectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Spawn hit effect
+        if (hitEffect != null)
+        {
+            PlayHitSFX();
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+        }
+
+        // Deal damage to player if applicable
         if (other.CompareTag("Player"))
         {
             Debug.Log("Hit Player!");
 
-            // Try to apply damage
             if (other.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
             {
                 playerStats.TakeDamage(damage);
             }
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject); // Always destroy after impact
     }
+
+    void PlayHitSFX()
+{
+    if (sphereHitSFX != null)
+        AudioSource.PlayClipAtPoint(sphereHitSFX, transform.position);
+}
 }
