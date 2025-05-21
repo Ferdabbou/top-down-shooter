@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb47d445f7d95d4f9a03c28c4dc1acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
+  bloodEffect: {fileID: 1248502257798346275, guid: 5445f79aa67073041bb488b73c60411c, type: 3}
+  impactEffect: {fileID: 4316927970707650905, guid: 25fa33c53f85b6f44a8dd9e336597dd5, type: 3}
+  bloodHitSFX: {fileID: 8300000, guid: c06de03dfe6c99648b1982e7a58d2fda, type: 3}
 --- !u!136 &6775986055960605686
 CapsuleCollider:
   m_ObjectHideFlags: 0
